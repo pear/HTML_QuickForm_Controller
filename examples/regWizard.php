@@ -90,7 +90,7 @@ class Page_Account_Information extends HTML_QuickForm_Page
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('next'), 'Finish');
         $this->addGroup($prevnext, 'buttons', '', '&nbsp;', false);
         
-        $this->addRule('name', 'First and last names are required', 'required');
+        $this->addGroupRule('name', 'First and last names are required', 'required');
         $this->addRule('company', 'Company is required', 'required');
         $this->addRule('address1', 'Address is required', 'required');
         $this->addRule('city', 'City is required', 'required');
