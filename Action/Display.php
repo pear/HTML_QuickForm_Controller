@@ -40,6 +40,12 @@ class HTML_QuickForm_Action_Display extends HTML_QuickForm_Action
         // BTW, if the page was invalid, we should later call validate() to get the errors
         list(, $oldName) = $page->controller->getActionName();
         if ('display' == $oldName) {
+            // If the controller is "modal" we should not allow direct access to a page
+            // unless all previous pages are valid (see also bug #2323)
+            if ($page->controller->isModal() && !$page->controller->isValid($page->getAttribute('id'))) {
+                $target =& $page->controller->getPage($page->controller->findInvalid());
+                $target->handle('jump');
+            }
             $data =& $page->controller->container();
             if (!empty($data['values'][$pageName])) {
                 $page->loadValues($data['values'][$pageName]);

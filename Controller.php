@@ -348,12 +348,14 @@ class HTML_QuickForm_Controller
     *
     * @access public
     * @param  array  default values
+    * @param  mixed  filter(s) to apply to default values
+    * @throws PEAR_Error
     */
-    function setDefaults($defaultValues = null)
+    function setDefaults($defaultValues = null, $filter = null)
     {
         if (is_array($defaultValues)) {
             $data =& $this->container();
-            $data['defaults'] = HTML_QuickForm::arrayMerge($data['defaults'], $defaultValues);
+            return $this->_setDefaultsOrConstants($data['defaults'], $defaultValues, $filter);
         }
     }
 
@@ -364,12 +366,66 @@ class HTML_QuickForm_Controller
     *
     * @access public
     * @param  array  constant values
+    * @param  mixed  filter(s) to apply to constant values
+    * @throws PEAR_Error
     */
-    function setConstants($constantValues = null)
+    function setConstants($constantValues = null, $filter = null)
     {
         if (is_array($constantValues)) {
             $data =& $this->container();
-            $data['constants'] = HTML_QuickForm::arrayMerge($data['constants'], $constantValues);
+            return $this->_setDefaultsOrConstants($data['constants'], $constantValues, $filter);
+        }
+    }
+
+
+   /**
+    * Adds new values to defaults or constants array
+    *
+    * @access   private
+    * @param    array   array to add values to (either defaults or constants)
+    * @param    array   values to add
+    * @param    mixed   filters to apply to new values
+    * @throws   PEAR_Error
+    */
+    function _setDefaultsOrConstants(&$values, $newValues, $filter = null)
+    {
+        if (isset($filter)) {
+            if (is_array($filter) && (2 != count($filter) || !is_callable($filter))) {
+                foreach ($filter as $val) {
+                    if (!is_callable($val)) {
+                        return PEAR::raiseError(null, QUICKFORM_INVALID_FILTER, null, E_USER_WARNING, "Callback function does not exist in QuickForm_Controller::_setDefaultsOrConstants()", 'HTML_QuickForm_Error', true);
+                    } else {
+                        $newValues = $this->_arrayMapRecursive($val, $newValues);
+                    }
+                }
+            } elseif (!is_callable($filter)) {
+                return PEAR::raiseError(null, QUICKFORM_INVALID_FILTER, null, E_USER_WARNING, "Callback function does not exist in QuickForm_Controller::_setDefaultsOrConstants()", 'HTML_QuickForm_Error', true);
+            } else {
+                $newValues = $this->_arrayMapRecursive($val, $newValues);
+            }
+        }
+        $values = HTML_QuickForm::arrayMerge($values, $newValues);
+    }
+
+
+   /**
+    * Recursively applies the callback function to the value
+    * 
+    * @param    mixed   Callback function
+    * @param    mixed   Value to process
+    * @access   private
+    * @return   mixed   Processed values
+    */
+    function _arrayMapRecursive($callback, $value)
+    {
+        if (!is_array($value)) {
+            return call_user_func($callback, $value);
+        } else {
+            $map = array();
+            foreach ($value as $k => $v) {
+                $map[$k] = $this->_arrayMapRecursive($callback, $v);
+            }
+            return $map;
         }
     }
 
