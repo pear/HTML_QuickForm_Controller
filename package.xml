@@ -30,7 +30,7 @@ Cool features:
   </maintainers>
   <release>
     <version>1.0.2</version>
-    <date>2004-03-??</date>
+    <date>2004-03-23</date>
     <state>stable</state>
     <notes>
 * HTML_QuickForm_Controller does not rely on form's "name" attribute anymore
