@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>HTML_QuickForm_Controller</name>
+  <summary>The add-on to HTML_QuickForm package that allows building of multipage forms</summary>
+  <description>
+The package is essentially an implementation of a PageController pattern.
+Architecture:
+* Controller class that examines HTTP requests and manages form values persistence across requests.
+* Page class (subclass of QuickForm) representing a single page of the form.
+* Business logic is contained in subclasses of Action class.
+Cool features: 
+* Includes several default Actions that allow easy building of multipage forms.
+* Includes usage examples for common usage cases (single-page form, wizard, tabbed form).
+  </description>
+  <license>PHP License</license>
+  <maintainers>
+    <maintainer>
+      <user>avb</user>
+      <name>Alexey Borzov</name>
+      <email>borz_off@cs.msu.su</email>
+      <role>lead</role>
+    </maintainer>
+    <maintainer>
+      <user>mansion</user>
+      <name>Bertrand Mansion</name>
+      <email>bmansion@mamasam.com</email>
+      <role>developer</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.9</version>
+    <date>2003-08-29</date>
+    <state>beta</state>
+    <notes>
+Initial PEAR release
+    </notes>
+    <filelist>
+      <dir name="/" baseinstalldir="HTML/QuickForm">
+        <file role="php">Action.php</file>
+        <file role="php">Controller.php</file>
+        <file role="php">Page.php</file>
+        <dir name="Action">
+          <file role="php">Back.php</file>
+          <file role="php">Direct.php</file>
+          <file role="php">Display.php</file>
+          <file role="php">Jump.php</file>
+          <file role="php">Next.php</file>
+          <file role="php">Submit.php</file>
+        </dir>
+        <dir name="examples">
+          <file role="doc">simple.php</file>
+          <file role="doc">tabbed.php</file>
+          <file role="doc">wizard.php</file>
+        </dir>
+      </dir>
+    </filelist>
+    <deps>
+       <dep type="pkg" rel="ge" version="3.1">HTML_QuickForm</dep>
+    </deps>
+  </release>
+</package>
