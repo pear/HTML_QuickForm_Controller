@@ -43,7 +43,7 @@ class HTML_QuickForm_Action_Display extends HTML_QuickForm_Action
             $data =& $page->controller->container();
             if (!empty($data['values'][$pageName])) {
                 $page->loadValues($data['values'][$pageName]);
-                $validate = !$data['valid'][$pageName];
+                $validate = false === $data['valid'][$pageName];
             }
         }
         // set "common" defaults and constants

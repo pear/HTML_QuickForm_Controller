@@ -110,7 +110,7 @@ class HTML_QuickForm_Controller
         foreach (array_keys($this->_pages) as $pageName) {
             if (!isset($_SESSION[$name]['values'][$pageName])) {
                 $_SESSION[$name]['values'][$pageName] = array();
-                $_SESSION[$name]['valid'][$pageName]  = false;
+                $_SESSION[$name]['valid'][$pageName]  = null;
             }
         }
         return $_SESSION[$name];
@@ -119,10 +119,10 @@ class HTML_QuickForm_Controller
 
    /**
     * Processes the request.
-    * 
+    *
     * This finds the current page, the current action and passes the action
     * to the page's handle() method.
-    * 
+    *
     * @access public
     */
     function run()
@@ -135,7 +135,7 @@ class HTML_QuickForm_Controller
 
    /**
     * Registers a handler for a specific action.
-    * 
+    *
     * @access public
     * @param  string    name of the action
     * @param  object HTML_QuickForm_Action   the handler for the action
@@ -148,7 +148,7 @@ class HTML_QuickForm_Controller
 
    /**
     * Adds a new page to the form
-    * 
+    *
     * @access public
     * @param  object HTML_QuickForm_Page
     */
@@ -161,7 +161,7 @@ class HTML_QuickForm_Controller
 
    /**
     * Returns a page
-    * 
+    *
     * @access public
     * @param  string    Name of a page
     * @return object    HTML_QuickForm_Page     A reference to the page
@@ -177,7 +177,7 @@ class HTML_QuickForm_Controller
 
    /**
     * Handles an action.
-    * 
+    *
     * This will be called if the page itself does not have a handler
     * to a specific action. The method also loads and uses default handlers
     * for common actions, if specific ones were not added.
@@ -234,9 +234,9 @@ class HTML_QuickForm_Controller
             if (isset($pageName) && $pageName == $key) {
                 return true;
             } elseif (!$data['valid'][$key]) {
-                // We should handle the possible situation when the user has never 
+                // We should handle the possible situation when the user has never
                 // seen a page of a non-modal multipage form
-                if (!$this->isModal() && empty($data['values'][$key])) {
+                if (!$this->isModal() && null === $data['valid'][$key]) {
                     $page =& $this->_pages[$key];
                     // Use controller's defaults and constants, if present
                     $this->applyDefaults($key);

@@ -36,7 +36,9 @@ class HTML_QuickForm_Action_Back extends HTML_QuickForm_Action
         $pageName =  $page->getAttribute('name');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
-        $data['valid'][$pageName]  = $page->validate();
+        if (!$page->controller->isModal()) {
+            $data['valid'][$pageName]  = $page->validate();
+        }
 
         // get the previous page and go to it
         // we don't check validation status here, 'jump' handler should

@@ -38,7 +38,6 @@ class HTML_QuickForm_Action_Jump extends HTML_QuickForm_Action
             // requested one
             $pageName = $page->getAttribute('name');
             if (!$page->controller->isValid($pageName)) {
-                // We don't do findInvalid(), we search data
                 $pageName = $page->controller->findInvalid();
             }
             $current =& $page->controller->getPage($pageName);
@@ -48,7 +47,7 @@ class HTML_QuickForm_Action_Jump extends HTML_QuickForm_Action
         }
         // generate the URL for the page 'display' event and redirect to it
         $action = $current->getAttribute('action');
-        $url    = $action . (false === strpos($action, '?')? '?': '&') . 
+        $url    = $action . (false === strpos($action, '?')? '?': '&') .
                   $current->getButtonName('display') . '=true' .
                   ((!defined('SID') || '' == SID)? '': '&' . SID);
         header('Location: ' . $url);
