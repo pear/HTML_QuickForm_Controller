@@ -30,13 +30,14 @@ Cool features:
   </maintainers>
   <release>
     <version>0.9.1</version>
-    <date>2003-09-??</date>
+    <date>2003-09-19</date>
     <state>beta</state>
     <notes>
 Changes and additions:
 * Added Controller::exportValue() method (thanks to Arnaud Limbourg)
 * Controller::exportValues() can return values for the single page (thanks to Arnaud Limbourg)
 * Added a parameter for Controller::container() that forces the container reset
+* Added a new example: registration wizard (Bertrand Mansion)
 
 Fixes:
 * Action_Next on the last page validates the whole form, not just the page itself
@@ -58,6 +59,7 @@ Fixes:
           <file role="doc">simple.php</file>
           <file role="doc">tabbed.php</file>
           <file role="doc">wizard.php</file>
+          <file role="doc">regWizard.php</file>
         </dir>
       </dir>
     </filelist>
