@@ -30,7 +30,7 @@ Cool features:
   </maintainers>
   <release>
     <version>1.0</version>
-    <date>2003-11-??</date>
+    <date>2003-11-05</date>
     <state>stable</state>
     <notes>
 This release is done to update package's status to 'stable'. The code is now
