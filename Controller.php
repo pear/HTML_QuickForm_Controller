@@ -412,7 +412,7 @@ class HTML_QuickForm_Controller
             // skip elements representing actions
             foreach ($data['values'][$page] as $key => $value) {
                 if (0 !== strpos($key, '_qf_')) {
-                    if (isset($values[$key])) {
+                    if (isset($values[$key]) && is_array($value)) {
                         $values[$key] = HTML_QuickForm::arrayMerge($values[$key], $value);
                     } else {
                         $values[$key] = $value;
