@@ -29,15 +29,12 @@ Cool features:
     </maintainer>
   </maintainers>
   <release>
-    <version>1.0.3</version>
-    <date>2004-10-01</date>
+    <version>1.0.4</version>
+    <date>2004-12-30</date>
     <state>stable</state>
     <notes>
-* Fixed an error in regWizard.php example (bug #1154)
-* It is no longer possible to go to a page of a modal form unless all the 
-  previous pages are valid (bug #2323)
-* Controller's setDefaults() and setConstants() methods now accept filters,
-  like corresponding HTML_QuickForm's methods do (request #1547)
+* perform() methods of all Action subclasses now consistently return 
+  values (bug #2689)
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="HTML/QuickForm">
@@ -70,6 +67,18 @@ Cool features:
     </deps>
   </release>
   <changelog>
+    <release>
+      <version>1.0.3</version>
+      <date>2004-10-01</date>
+      <state>stable</state>
+      <notes>
+* Fixed an error in regWizard.php example (bug #1154)
+* It is no longer possible to go to a page of a modal form unless all the 
+  previous pages are valid (bug #2323)
+* Controller's setDefaults() and setConstants() methods now accept filters,
+  like corresponding HTML_QuickForm's methods do (request #1547)
+      </notes>
+    </release>
     <release>
       <version>1.0.2</version>
       <date>2004-03-23</date>
