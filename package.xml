@@ -29,15 +29,17 @@ Cool features:
     </maintainer>
   </maintainers>
   <release>
-    <version>0.9.3</version>
-    <date>2003-10-24</date>
-    <state>beta</state>
+    <version>1.0</version>
+    <date>2003-11-??</date>
+    <state>stable</state>
     <notes>
-* Controller now differentiates between invalid and not-yet-validated pages. False is stored
-in container's ['valid'][$pageName] field for the former, null for the latter. This is
-a POTENTIAL BC BREAK, so pay attention if you wrote your own Actions.
-* Back action in modal forms does not validate the page anymore (the previous behaviour was
-non-intuitive, thanks to Bob Van Zant for reporting).
+This release is done to update package's status to 'stable'. The code is now
+considered mature and tested enough to be used in production.
+
+Changes:
+* No changes to classes since 0.9.3
+* Added an example of wizard with file upload (Bertrand Mansion)
+* Depend on newest version of HTML_QuickForm 
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="HTML/QuickForm">
@@ -57,14 +59,30 @@ non-intuitive, thanks to Bob Van Zant for reporting).
           <file role="doc">tabbed.php</file>
           <file role="doc">wizard.php</file>
           <file role="doc">regWizard.php</file>
+          <file role="doc">upload.php</file>
+          <dir name="templates">
+            <file role="doc">upload.html</file>
+          </dir>
         </dir>
       </dir>
     </filelist>
     <deps>
-       <dep type="pkg" rel="ge" version="3.1">HTML_QuickForm</dep>
+       <dep type="pkg" rel="ge" version="3.2">HTML_QuickForm</dep>
     </deps>
   </release>
   <changelog>
+    <release>
+      <version>0.9.3</version>
+      <date>2003-10-24</date>
+      <state>beta</state>
+      <notes>
+* Controller now differentiates between invalid and not-yet-validated pages. False is stored
+in container's ['valid'][$pageName] field for the former, null for the latter. This is
+a POTENTIAL BC BREAK, so pay attention if you wrote your own Actions.
+* Back action in modal forms does not validate the page anymore (the previous behaviour was
+non-intuitive, thanks to Bob Van Zant for reporting).
+      </notes>
+    </release>
     <release>
       <version>0.9.2</version>
       <date>2003-10-02</date>
