@@ -29,17 +29,12 @@ Cool features:
     </maintainer>
   </maintainers>
   <release>
-    <version>1.0</version>
-    <date>2003-11-05</date>
+    <version>1.0.1</version>
+    <date>2003-12-11</date>
     <state>stable</state>
     <notes>
-This release is done to update package's status to 'stable'. The code is now
-considered mature and tested enough to be used in production.
-
-Changes:
-* No changes to classes since 0.9.3
-* Added an example of wizard with file upload (Bertrand Mansion)
-* Depend on newest version of HTML_QuickForm 
+* Added a new example showing how to proceed to either of the two pages
+  based on user input (Donald Lobo).
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="HTML/QuickForm">
@@ -63,6 +58,7 @@ Changes:
           <dir name="templates">
             <file role="doc">upload.html</file>
           </dir>
+          <file role="doc">statemachine.php</file>
         </dir>
       </dir>
     </filelist>
@@ -71,6 +67,20 @@ Changes:
     </deps>
   </release>
   <changelog>
+    <release>
+      <version>1.0</version>
+      <date>2003-11-05</date>
+      <state>stable</state>
+      <notes>
+This release is done to update package's status to 'stable'. The code is now
+considered mature and tested enough to be used in production.
+
+Changes:
+* No changes to classes since 0.9.3
+* Added an example of wizard with file upload (Bertrand Mansion)
+* Depend on newest version of HTML_QuickForm 
+      </notes>
+    </release>
     <release>
       <version>0.9.3</version>
       <date>2003-10-24</date>
