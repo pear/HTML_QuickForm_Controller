@@ -93,12 +93,13 @@ class HTML_QuickForm_Controller
     * get the form's values.
     * 
     * @access public
+    * @param  bool      If true, then reset the container: clear all default, constant and submitted values
     * @return array
     */
-    function &container()
+    function &container($reset = false)
     {
         $name = '_' . $this->_name . '_container';
-        if (!isset($_SESSION[$name])) {
+        if (!isset($_SESSION[$name]) || $reset) {
             $_SESSION[$name] = array(
                 'defaults'  => array(),
                 'constants' => array(),
