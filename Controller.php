@@ -353,7 +353,7 @@ class HTML_QuickForm_Controller
     {
         if (is_array($defaultValues)) {
             $data =& $this->container();
-            $data['defaults'] = array_merge($data['defaults'], $defaultValues);
+            $data['defaults'] = HTML_QuickForm::arrayMerge($data['defaults'], $defaultValues);
         }
     }
 
@@ -369,7 +369,7 @@ class HTML_QuickForm_Controller
     {
         if (is_array($constantValues)) {
             $data =& $this->container();
-            $data['constants'] = array_merge($data['constants'], $constantValues);
+            $data['constants'] = HTML_QuickForm::arrayMerge($data['constants'], $constantValues);
         }
     }
 
