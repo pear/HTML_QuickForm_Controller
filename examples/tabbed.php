@@ -38,6 +38,8 @@ class PageFoo extends HTML_QuickForm_Page
         $this->addElement('submit',     $this->getButtonName('submit'), 'Big Red Button', array('class' => 'bigred'));
 
         $this->addRule('iradYesNoMaybe', 'Check a radiobutton', 'required');
+
+        $this->setDefaultAction('submit');
     }
 }
 
@@ -65,6 +67,8 @@ class PageBar extends HTML_QuickForm_Page
         $this->addGroup($checkbox, 'favLetter', 'Favourite letters:', array('&nbsp;', '<br />'));
 
         $this->addElement('submit',     $this->getButtonName('submit'), 'Big Red Button', array('class' => 'bigred'));
+
+        $this->setDefaultAction('submit');
     }
 }
 
@@ -87,6 +91,8 @@ class PageBaz extends HTML_QuickForm_Page
         $this->addElement('submit',     $this->getButtonName('submit'), 'Big Red Button', array('class' => 'bigred'));
 
         $this->addRule('textPoetry', 'Pretty please!', 'required');
+
+        $this->setDefaultAction('submit');
     }
 }
 

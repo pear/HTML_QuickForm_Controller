@@ -332,6 +332,12 @@ class HTML_QuickForm_Controller
                 return array($matches[1], $matches[2]);
             }
         }
+        if (isset($_REQUEST['_qf_default'])) {
+            $matches = explode(':', $_REQUEST['_qf_default'], 2);
+            if (isset($this->_pages[$matches[0]])) {
+                return $matches;
+            }
+        }
         reset($this->_pages);
         return array(key($this->_pages), 'display');
     }

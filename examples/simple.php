@@ -26,6 +26,8 @@ class SimplePage extends HTML_QuickForm_Page
 
         $this->applyFilter('tstText', 'trim');
         $this->addRule('tstText', 'Pretty please!', 'required');
+
+        $this->setDefaultAction('submit');
     }
 }
 

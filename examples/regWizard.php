@@ -52,6 +52,8 @@ class Page_Account_Credentials extends HTML_QuickForm_Page
         $this->addRule('password2', 'The password confirmation is required', 'required', '', 'client');
 
         $this->addFormRule('comparePassword');
+
+        $this->setDefaultAction('next');
     }
 }
 
@@ -93,6 +95,7 @@ class Page_Account_Information extends HTML_QuickForm_Page
         $this->addRule('address1', 'Address is required', 'required');
         $this->addRule('city', 'City is required', 'required');
 
+        $this->setDefaultAction('next');
     }
 }
 

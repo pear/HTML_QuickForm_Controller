@@ -154,6 +154,27 @@ class HTML_QuickForm_Page extends HTML_QuickForm
     {
         return $this->_formBuilt;
     }
+
+
+   /**
+    * Sets the default action invoked on page-form submit
+    * 
+    * This is necessary as the user may just press Enter instead of
+    * clicking one of the named submit buttons and then no action name will
+    * be passed to the script.
+    * 
+    * @access public
+    * @param  string    default action name
+    */
+    function setDefaultAction($actionName)
+    {
+        if ($this->elementExists('_qf_default')) {
+            $element =& $this->getElement('_qf_default');
+            $element->setValue($this->getAttribute('name') . ':' . $actionName);
+        } else {
+            $this->addElement('hidden', '_qf_default', $this->getAttribute('name') . ':' . $actionName);
+        }
+    }
 }
 
 ?>

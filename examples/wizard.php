@@ -31,6 +31,8 @@ class PageFirst extends HTML_QuickForm_Page
         $this->addElement('submit',     $this->getButtonName('next'), 'Next >>');
 
         $this->addRule('iradYesNo', 'Check Yes or No', 'required');
+
+        $this->setDefaultAction('next');
     }
 }
 
@@ -51,6 +53,8 @@ class PageSecond extends HTML_QuickForm_Page
         $this->addGroup($prevnext, null, '', '&nbsp;', false);
         
         $this->addGroupRule('name', array('last' => array(array('Last name is required', 'required'))));
+
+        $this->setDefaultAction('next');
     }
 }
 
@@ -69,6 +73,8 @@ class PageThird extends HTML_QuickForm_Page
         $this->addGroup($prevnext, null, '', '&nbsp;', false);
 
         $this->addRule('itxaTest', 'Say something!', 'required');
+
+        $this->setDefaultAction('next');
     }
 }
 
