@@ -389,15 +389,21 @@ class HTML_QuickForm_Controller
     * Returns the form's values
     * 
     * @access public
+    * @param  string    name of the page, if not set then returns values for all pages
     * @return array
     */
-    function exportValues()
+    function exportValues($pageName = null)
     {
         $data   =& $this->container();
         $values =  array();
-        foreach ($data['values'] as $pageValues) {
+        if (isset($pageName)) {
+            $pages = array($pageName);
+        } else {
+            $pages = array_keys($data['values']);
+        }
+        foreach ($pages as $page) {
             // skip elements representing actions
-            foreach ($pageValues as $key => $value) {
+            foreach ($data['values'][$page] as $key => $value) {
                 if (!preg_match('/^_qf_/', $key)) {
                     $values[$key] = $value;
                 }
@@ -405,6 +411,20 @@ class HTML_QuickForm_Controller
         }
         return $values;
     }
-}
 
+
+   /**
+    * Returns the element's value
+    * 
+    * @access public
+    * @param  string    name of the page
+    * @param  string    name of the element in the page
+    * @return mixed     value for the element
+    */
+    function exportValue($pageName, $elementName)
+    {
+        $data =& $this->container();
+        return isset($data['values'][$pageName][$elementName])? $data['values'][$pageName][$elementName]: null;
+    }
+}
 ?>
