@@ -48,7 +48,12 @@ class HTML_QuickForm_Action_Next extends HTML_QuickForm_Action
             $next->handle('jump');
         // Consider this a 'finish' button, if there is no explicit one
         } elseif($page->controller->isModal()) {
-            $page->handle('process');
+            if ($page->controller->isValid()) {
+                $page->handle('process');
+            } else {
+                // this should redirect to the first invalid page
+                $page->handle('jump');
+            }
         } else {
             $page->handle('display');
         }
