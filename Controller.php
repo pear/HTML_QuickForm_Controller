@@ -155,7 +155,7 @@ class HTML_QuickForm_Controller
     function addPage(&$page)
     {
         $page->controller =& $this;
-        $this->_pages[$page->getAttribute('name')] =& $page;
+        $this->_pages[$page->getAttribute('id')] =& $page;
     }
 
 
@@ -203,7 +203,7 @@ class HTML_QuickForm_Controller
                 return $this->_actions[$actionName]->perform($page, $actionName);
                 break;
             default:
-                return PEAR::raiseError('HTML_QuickForm_Controller: Unhandled action "' . $actionName . '" in page "' . $page->getAttribute('name') . '"');
+                return PEAR::raiseError('HTML_QuickForm_Controller: Unhandled action "' . $actionName . '" in page "' . $page->getAttribute('id') . '"');
         } // switch
     }
 

@@ -105,7 +105,7 @@ class HTML_QuickForm_Page extends HTML_QuickForm
     */
     function getButtonName($actionName)
     {
-        return '_qf_' . $this->getAttribute('name') . '_' . $actionName;
+        return '_qf_' . $this->getAttribute('id') . '_' . $actionName;
     }
 
 
@@ -170,9 +170,9 @@ class HTML_QuickForm_Page extends HTML_QuickForm
     {
         if ($this->elementExists('_qf_default')) {
             $element =& $this->getElement('_qf_default');
-            $element->setValue($this->getAttribute('name') . ':' . $actionName);
+            $element->setValue($this->getAttribute('id') . ':' . $actionName);
         } else {
-            $this->addElement('hidden', '_qf_default', $this->getAttribute('name') . ':' . $actionName);
+            $this->addElement('hidden', '_qf_default', $this->getAttribute('id') . ':' . $actionName);
         }
     }
 }

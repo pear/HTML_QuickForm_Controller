@@ -35,7 +35,7 @@ class HTML_QuickForm_Action_Display extends HTML_QuickForm_Action
 {
     function perform(&$page, $actionName)
     {
-        $pageName = $page->getAttribute('name');
+        $pageName = $page->getAttribute('id');
         // If the original action was 'display' and we have values in container then we load them
         // BTW, if the page was invalid, we should later call validate() to get the errors
         list(, $oldName) = $page->controller->getActionName();

@@ -33,7 +33,7 @@ class HTML_QuickForm_Action_Back extends HTML_QuickForm_Action
     {
         // save the form values and validation status to the session
         $page->isFormBuilt() or $page->buildForm();
-        $pageName =  $page->getAttribute('name');
+        $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         if (!$page->controller->isModal()) {

@@ -134,7 +134,7 @@ class ActionUpload extends HTML_QuickForm_Action
         // like in Action_Next
         $page->isFormBuilt() or $page->buildForm();
 
-        $pageName =  $page->getAttribute('name');
+        $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         $data['valid'][$pageName]  = $page->validate();

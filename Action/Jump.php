@@ -36,7 +36,7 @@ class HTML_QuickForm_Action_Jump extends HTML_QuickForm_Action
             // we check whether *all* pages up to current are valid
             // if there is an invalid page we go to it, instead of the
             // requested one
-            $pageName = $page->getAttribute('name');
+            $pageName = $page->getAttribute('id');
             if (!$page->controller->isValid($pageName)) {
                 $pageName = $page->controller->findInvalid();
             }

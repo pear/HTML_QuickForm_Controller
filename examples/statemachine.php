@@ -25,7 +25,7 @@ class PageFirstActionNext extends HTML_QuickForm_Action_Next
     {
       // save the form values and validation status to the session
         $page->isFormBuilt() or $page->buildForm();
-        $pageName =  $page->getAttribute('name');
+        $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         $data['valid'][$pageName]  = $page->validate();
@@ -56,7 +56,7 @@ class PageSecondActionNext extends HTML_QuickForm_Action_Next
     { 
       // save the form values and validation status to the session
         $page->isFormBuilt() or $page->buildForm();
-        $pageName =  $page->getAttribute('name');
+        $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         $data['valid'][$pageName]  = $page->validate();
@@ -79,7 +79,7 @@ class PageSecondActionBack extends HTML_QuickForm_Action_Back
     {
         // save the form values and validation status to the session
         $page->isFormBuilt() or $page->buildForm();
-        $pageName =  $page->getAttribute('name');
+        $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         if (!$page->controller->isModal()) {
@@ -98,7 +98,7 @@ class PageThirdActionBack extends HTML_QuickForm_Action_Back
     {
         // save the form values and validation status to the session
         $page->isFormBuilt() or $page->buildForm();
-        $pageName =  $page->getAttribute('name');
+        $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         if (!$page->controller->isModal()) {
