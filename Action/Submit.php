@@ -40,16 +40,16 @@ class HTML_QuickForm_Action_Submit extends HTML_QuickForm_Action
 
         // All pages are valid, process
         if ($page->controller->isValid()) {
-            $page->handle('process');
+            return $page->handle('process');
 
         // Current page is invalid, display it
         } elseif (!$data['valid'][$pageName]) {
-            $page->handle('display');
+            return $page->handle('display');
 
         // Some other page is invalid, redirect to it
         } else {
             $target =& $page->controller->getPage($page->controller->findInvalid());
-            $target->handle('jump');
+            return $target->handle('jump');
         }
     }
 }

@@ -43,10 +43,10 @@ class HTML_QuickForm_Action_Back extends HTML_QuickForm_Action
         // get the previous page and go to it
         // we don't check validation status here, 'jump' handler should
         if (null === ($prevName = $page->controller->getPrevName($pageName))) {
-            $page->handle('jump');
+            return $page->handle('jump');
         } else {
             $prev =& $page->controller->getPage($prevName);
-            $prev->handle('jump');
+            return $prev->handle('jump');
         }
     }
 }
