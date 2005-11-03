@@ -58,7 +58,7 @@ class HTML_QuickForm_Page extends HTML_QuickForm
     * 
     * @access public
     */
-    function HTML_QuickForm_Page($formName, $method = 'post', $target = '_self', $attributes = null)
+    function HTML_QuickForm_Page($formName, $method = 'post', $target = '', $attributes = null)
     {
         $this->HTML_QuickForm($formName, $method, '', $target, $attributes);
     }
@@ -119,6 +119,7 @@ class HTML_QuickForm_Page extends HTML_QuickForm
     */
     function loadValues($values)
     {
+        $this->_flagSubmitted = true;
         $this->_submitValues = $values;
         foreach (array_keys($this->_elements) as $key) {
             $this->_elements[$key]->onQuickFormEvent('updateValue', null, $this);
