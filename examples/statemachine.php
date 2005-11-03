@@ -125,7 +125,7 @@ class PageFirst extends HTML_QuickForm_Page
 
         $this->addElement('submit',     $this->getButtonName('next'), 'Next >>');
 
-        $this->addRule('iradYesNo', 'Select the page', 'required');
+        $this->addRule('iradPageAB', 'Select the page', 'required');
 
         $this->setDefaultAction('next');
     }
