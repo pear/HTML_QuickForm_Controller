@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0">
+<package xmlns="http://pear.php.net/dtd/package-1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://pear.php.net/dtd/package-1.0 http://pear.php.net/dtd/package-1.0.xsd"
+		 version="1.0">
   <name>HTML_QuickForm_Controller</name>
   <summary>The add-on to HTML_QuickForm package that allows building of multipage forms</summary>
   <description>
@@ -29,47 +31,65 @@ Cool features:
     </maintainer>
   </maintainers>
   <release>
+    <version>1.0.5</version>
+    <date>2005-11-04</date>
+    <license>PHP License</license>
+    <state>stable</state>
+    <notes>
+This is a recommended upgrade for users running HTML_QuickForm 3.2.5
+
+* Fixed bug #3443: honour session.use_only_cookies setting by not passing
+  session ID in URL when it is on.
+* Fixed bug #5615: some elements' values not displayed properly after
+  browsing back to a form page (see also bug #5625)
+* Fixed bug #5641: unwanted target="_self" form attribute
+* Fixed bug #5743: wrong element name in example file statemachine.php
+    </notes>
+    <deps>
+       <dep type="pkg" rel="ge" version="3.2.5">HTML_QuickForm</dep>
+    </deps>
+    <filelist>
+      <dir name="/" baseinstalldir="HTML/QuickForm">
+        <file role="php" name="Action.php" />
+        <file role="php" name="Controller.php" />
+        <file role="php" name="Page.php" />
+        <dir name="Action">
+          <file role="php" name="Back.php" />
+          <file role="php" name="Direct.php" />
+          <file role="php" name="Display.php" />
+          <file role="php" name="Jump.php" />
+          <file role="php" name="Next.php" />
+          <file role="php" name="Submit.php" />
+        </dir>
+        <dir name="examples">
+          <file role="doc" name="simple.php" />
+          <file role="doc" name="tabbed.php" />
+          <file role="doc" name="wizard.php" />
+          <file role="doc" name="regWizard.php" />
+          <file role="doc" name="upload.php" />
+          <dir name="templates">
+            <file role="doc" name="upload.html" />
+          </dir>
+          <file role="doc" name="statemachine.php" />
+        </dir>
+      </dir>
+    </filelist>
+  </release>
+  <changelog>
+  <release>
     <version>1.0.4</version>
     <date>2004-12-30</date>
+    <license>PHP License</license>
     <state>stable</state>
     <notes>
 * perform() methods of all Action subclasses now consistently return 
   values (bug #2689)
     </notes>
-    <filelist>
-      <dir name="/" baseinstalldir="HTML/QuickForm">
-        <file role="php">Action.php</file>
-        <file role="php">Controller.php</file>
-        <file role="php">Page.php</file>
-        <dir name="Action">
-          <file role="php">Back.php</file>
-          <file role="php">Direct.php</file>
-          <file role="php">Display.php</file>
-          <file role="php">Jump.php</file>
-          <file role="php">Next.php</file>
-          <file role="php">Submit.php</file>
-        </dir>
-        <dir name="examples">
-          <file role="doc">simple.php</file>
-          <file role="doc">tabbed.php</file>
-          <file role="doc">wizard.php</file>
-          <file role="doc">regWizard.php</file>
-          <file role="doc">upload.php</file>
-          <dir name="templates">
-            <file role="doc">upload.html</file>
-          </dir>
-          <file role="doc">statemachine.php</file>
-        </dir>
-      </dir>
-    </filelist>
-    <deps>
-       <dep type="pkg" rel="ge" version="3.2.2">HTML_QuickForm</dep>
-    </deps>
-  </release>
-  <changelog>
+    </release>
     <release>
       <version>1.0.3</version>
       <date>2004-10-01</date>
+      <license>PHP License</license>
       <state>stable</state>
       <notes>
 * Fixed an error in regWizard.php example (bug #1154)
@@ -82,6 +102,7 @@ Cool features:
     <release>
       <version>1.0.2</version>
       <date>2004-03-23</date>
+      <license>PHP License</license>
       <state>stable</state>
       <notes>
 * HTML_QuickForm_Controller does not rely on form's "name" attribute anymore
@@ -95,6 +116,7 @@ Cool features:
     <release>
       <version>1.0.1</version>
       <date>2003-12-11</date>
+      <license>PHP License</license>
       <state>stable</state>
       <notes>
 * Added a new example showing how to proceed to either of the two pages
@@ -104,6 +126,7 @@ Cool features:
     <release>
       <version>1.0</version>
       <date>2003-11-05</date>
+      <license>PHP License</license>
       <state>stable</state>
       <notes>
 This release is done to update package's status to 'stable'. The code is now
@@ -118,6 +141,7 @@ Changes:
     <release>
       <version>0.9.3</version>
       <date>2003-10-24</date>
+      <license>PHP License</license>
       <state>beta</state>
       <notes>
 * Controller now differentiates between invalid and not-yet-validated pages. False is stored
@@ -130,6 +154,7 @@ non-intuitive, thanks to Bob Van Zant for reporting).
     <release>
       <version>0.9.2</version>
       <date>2003-10-02</date>
+      <license>PHP License</license>
       <state>beta</state>
       <notes>
 Added Page::setDefaultAction() method to fix the Controller's behaviour when user presses
@@ -139,6 +164,7 @@ Enter instead of clicking on one of submit buttons. Thanks to Mike Carter for re
     <release>
       <version>0.9.1</version>
       <date>2003-09-19</date>
+      <license>PHP License</license>
       <state>beta</state>
       <notes>
 Changes and additions:
@@ -154,6 +180,7 @@ Fixes:
     <release>
       <version>0.9</version>
       <date>2003-08-29</date>
+      <license>PHP License</license>
       <state>beta</state>
       <notes>
 Initial PEAR release
