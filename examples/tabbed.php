@@ -15,17 +15,47 @@ require_once 'HTML/QuickForm/Action/Direct.php';
 
 session_start();
 
-class PageFoo extends HTML_QuickForm_Page
+class TabbedPage extends HTML_QuickForm_Page
 {
-    function buildForm()
+    function buildTabs()
     {
         $this->_formBuilt = true;
 
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('foo'), 'Foo', array('class' => 'flat', 'disabled' => 'disabled'));
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('bar'), 'Bar', array('class' => 'flat'));
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('baz'), 'Baz', array('class' => 'flat'));
+        // Here we get all page names in the controller
+        $pages  = array();
+        $myName = $current = $this->getAttribute('id');
+        while (null !== ($current = $this->controller->getPrevName($current))) {
+            $pages[] = $current;
+        }
+        $pages = array_reverse($pages);
+        $pages[] = $current = $myName;
+        while (null !== ($current = $this->controller->getNextName($current))) {
+            $pages[] = $current;
+        }
+        // Here we display buttons for all pages, the current one's is disabled
+        foreach ($pages as $pageName) {
+            $tabs[] = $this->createElement(
+                        'submit', $this->getButtonName($pageName), ucfirst($pageName),
+                        array('class' => 'flat') + ($pageName == $myName? array('disabled' => 'disabled'): array())
+                      );
+        }
         $this->addGroup($tabs, 'tabs', null, '&nbsp;', false);
-        
+    }
+
+    function addGlobalSubmit()
+    {
+        $this->addElement('submit', $this->getButtonName('submit'), 'Big Red Button', array('class' => 'bigred'));
+        $this->setDefaultAction('submit');
+    }
+}
+
+
+class PageFoo extends TabbedPage
+{
+    function buildForm()
+    {
+        $this->buildTabs();
+
         $this->addElement('header',     null, 'Foo page');
 
         $radio[] = &$this->createElement('radio', null, null, 'Yes', 'Y');
@@ -35,24 +65,17 @@ class PageFoo extends HTML_QuickForm_Page
 
         $this->addElement('text',       'tstText', 'Why do you want it?', array('size'=>20, 'maxlength'=>50));
 
-        $this->addElement('submit',     $this->getButtonName('submit'), 'Big Red Button', array('class' => 'bigred'));
-
         $this->addRule('iradYesNoMaybe', 'Check a radiobutton', 'required');
 
-        $this->setDefaultAction('submit');
+        $this->addGlobalSubmit();
     }
 }
 
-class PageBar extends HTML_QuickForm_Page
+class PageBar extends TabbedPage
 {
     function buildForm()
     {
-        $this->_formBuilt = true;
-
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('foo'), 'Foo', array('class' => 'flat'));
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('bar'), 'Bar', array('class' => 'flat', 'disabled' => 'disabled'));
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('baz'), 'Baz', array('class' => 'flat'));
-        $this->addGroup($tabs, 'tabs', null, '&nbsp;', false);
+        $this->buildTabs();
         
         $this->addElement('header',     null, 'Bar page');
 
@@ -66,33 +89,24 @@ class PageBar extends HTML_QuickForm_Page
         $checkbox[] = &$this->createElement('checkbox', 'Z', null, 'Z');
         $this->addGroup($checkbox, 'favLetter', 'Favourite letters:', array('&nbsp;', '<br />'));
 
-        $this->addElement('submit',     $this->getButtonName('submit'), 'Big Red Button', array('class' => 'bigred'));
-
-        $this->setDefaultAction('submit');
+        $this->addGlobalSubmit();
     }
 }
 
-class PageBaz extends HTML_QuickForm_Page
+class PageBaz extends TabbedPage
 {
     function buildForm()
     {
-        $this->_formBuilt = true;
-
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('foo'), 'Foo', array('class' => 'flat'));
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('bar'), 'Bar', array('class' => 'flat'));
-        $tabs[] =& $this->createElement('submit',   $this->getButtonName('baz'), 'Baz', array('class' => 'flat', 'disabled' => 'disabled'));
-        $this->addGroup($tabs, 'tabs', null, '&nbsp;', false);
+        $this->buildTabs();
         
         $this->addElement('header',     null, 'Baz page');
 
         $this->addElement('textarea',   'textPoetry', 'Recite a poem:', array('rows' => 5, 'cols' => 40));
         $this->addElement('textarea',   'textOpinion', 'Did you like this demo?', array('rows' => 5, 'cols' => 40));
 
-        $this->addElement('submit',     $this->getButtonName('submit'), 'Big Red Button', array('class' => 'bigred'));
-
         $this->addRule('textPoetry', 'Pretty please!', 'required');
 
-        $this->setDefaultAction('submit');
+        $this->addGlobalSubmit();
     }
 }
 
