@@ -49,7 +49,7 @@ class HTML_QuickForm_Action_Jump extends HTML_QuickForm_Action
         $action = $current->getAttribute('action');
         $url    = $action . (false === strpos($action, '?')? '?': '&') .
                   $current->getButtonName('display') . '=true' .
-                  ((!defined('SID') || '' == SID)? '': '&' . SID);
+                  ((!defined('SID') || '' == SID || ini_get('session.use_only_cookies'))? '': '&' . SID);
         header('Location: ' . $url);
         exit;
     }
