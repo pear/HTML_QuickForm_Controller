@@ -176,6 +176,26 @@ class HTML_QuickForm_Page extends HTML_QuickForm
             $this->addElement('hidden', '_qf_default', $this->getAttribute('id') . ':' . $actionName);
         }
     }
+
+
+   /**
+    * Returns 'safe' elements' values
+    * 
+    * @param   mixed   Array/string of element names, whose values we want. If not set then return all elements.
+    * @param   bool    Whether to remove internal (_qf_...) values from the resultant array
+    */
+    function exportValues($elementList = null, $filterInternal = false)
+    {
+        $values = parent::exportValues($elementList);
+        if ($filterInternal) {
+            foreach (array_keys($values) as $key) {
+                if (0 === strpos($key, '_qf_')) {
+                    unset($values[$key]);
+                }
+            }
+        }
+        return $values;
+    }
 }
 
 ?>
