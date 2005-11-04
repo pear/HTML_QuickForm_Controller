@@ -44,6 +44,11 @@ This is a recommended upgrade for users running HTML_QuickForm 3.2.5
   browsing back to a form page (see also bug #5625)
 * Fixed bug #5641: unwanted target="_self" form attribute
 * Fixed bug #5743: wrong element name in example file statemachine.php
+
+* Implemented request #4973: internal values may be filtered from the
+  array returned by HTML_QuickForm_Page::exportValues()
+* Redone tabbed.php example to use a common base class instead of
+  braindead copy-paste technique (see also request #5234)
     </notes>
     <deps>
        <dep type="pkg" rel="ge" version="3.2.5">HTML_QuickForm</dep>
