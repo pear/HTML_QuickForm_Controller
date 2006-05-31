@@ -2,9 +2,9 @@
 /**
  * Example for HTML_QuickForm_Controller: Statemachine
  * Going to either of the two pages based on user input
- * 
+ *
  * @author Donald Lobo <lobo@groundspring.org>
- * 
+ *
  * $Id$
  */
 
@@ -21,14 +21,17 @@ session_start();
 
 class PageFirstActionNext extends HTML_QuickForm_Action_Next
 {
-    function perform(&$page, $actionName) 
+    function perform(&$page, $actionName)
     {
       // save the form values and validation status to the session
         $page->isFormBuilt() or $page->buildForm();
         $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
-        $data['valid'][$pageName]  = $page->validate();
+        if (PEAR::isError($valid = $page->validate())) {
+            return $valid;
+        }
+        $data['valid'][$pageName] = $valid;
 
         // Modal form and page is invalid: don't go further
         if ($page->controller->isModal() && !$data['valid'][$pageName]) {
@@ -53,13 +56,16 @@ class PageFirstActionNext extends HTML_QuickForm_Action_Next
 class PageSecondActionNext extends HTML_QuickForm_Action_Next
 {
     function perform(&$page, $actionName)
-    { 
+    {
       // save the form values and validation status to the session
         $page->isFormBuilt() or $page->buildForm();
         $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
-        $data['valid'][$pageName]  = $page->validate();
+        if (PEAR::isError($valid = $page->validate())) {
+            return $valid;
+        }
+        $data['valid'][$pageName] = $valid;
 
         // Modal form and page is invalid: don't go further
         if ($page->controller->isModal() && !$data['valid'][$pageName]) {
@@ -68,7 +74,7 @@ class PageSecondActionNext extends HTML_QuickForm_Action_Next
 
         // More pages?
         $next =& $page->controller->getPage('page3');
-        $next->handle('jump'); 
+        $next->handle('jump');
     }
 }
 
@@ -83,7 +89,10 @@ class PageSecondActionBack extends HTML_QuickForm_Action_Back
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         if (!$page->controller->isModal()) {
-            $data['valid'][$pageName]  = $page->validate();
+            if (PEAR::isError($valid = $page->validate())) {
+                return $valid;
+            }
+            $data['valid'][$pageName] = $valid;
         }
 
         $prev =& $page->controller->getPage('page1');
@@ -102,7 +111,10 @@ class PageThirdActionBack extends HTML_QuickForm_Action_Back
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
         if (!$page->controller->isModal()) {
-            $data['valid'][$pageName]  = $page->validate();
+            if (PEAR::isError($valid = $page->validate())) {
+                return $valid;
+            }
+            $data['valid'][$pageName] = $valid;
         }
 
         $prev =& $page->controller->getPage($data['values']['page1']['iradPageAB']);
@@ -146,7 +158,7 @@ class PageSecondAlpha extends HTML_QuickForm_Page
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('back'), '<< Back');
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('next'), 'Next >>');
         $this->addGroup($prevnext, null, '', '&nbsp;', false);
-        
+
         $this->addGroupRule('name', array('last' => array(array('Last name is required', 'required'))));
 
         $this->setDefaultAction('next');

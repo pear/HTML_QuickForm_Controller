@@ -55,14 +55,14 @@ class Page_CMS_Fill extends HTML_QuickForm_Page
         $this->_formBuilt = true;
 
         $this->registerRule('isImage',  'callback', '_ruleIsImage', get_class($this));
-        
+
         $text  =& $this->createElement('textarea', 'content', 'Type text here...', array('cols'=>30, 'rows'=>4));
         $upped =& $this->createElement('file', 'file', 'Upload your image here...');
 
         if ($this->controller->exportValue('page1', 'layout') == 'A') {
             $this->addGroup(array($upped, $text), 'contents', 'Enter the contents', null, false);
         } else {
-            $this->addGroup(array($text, $upped), 'contents', 'Enter the contents', null, false);		
+            $this->addGroup(array($text, $upped), 'contents', 'Enter the contents', null, false);
         }
 
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('back'), '<< Previous step');
@@ -114,7 +114,7 @@ class Page_CMS_Preview extends HTML_QuickForm_Page
         if ($this->controller->exportValue('page1', 'layout') == 'A') {
             $this->addGroup(array($theImg, $theTxt), 'contents', 'Your contents', null, false);
         } else {
-            $this->addGroup(array($theTxt, $theImg), 'contents', 'Your contents', null, false);		
+            $this->addGroup(array($theTxt, $theImg), 'contents', 'Your contents', null, false);
         }
 
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('back'), '<< Previous step');
@@ -137,7 +137,10 @@ class ActionUpload extends HTML_QuickForm_Action
         $pageName =  $page->getAttribute('id');
         $data     =& $page->controller->container();
         $data['values'][$pageName] = $page->exportValues();
-        $data['valid'][$pageName]  = $page->validate();
+        if (PEAR::isError($valid = $page->validate())) {
+            return $valid;
+        }
+        $data['valid'][$pageName] = $valid;
 
         if (!$data['valid'][$pageName]) {
             return $page->handle('display');
@@ -197,7 +200,7 @@ class ActionDisplay extends HTML_QuickForm_Action_Display
 class ActionProcess extends HTML_QuickForm_Action
 {
     function perform(&$page, $actionName)
-    {   
+    {
         $values = $page->controller->exportValues();
         echo '<pre>';
         var_dump($values);
@@ -205,7 +208,7 @@ class ActionProcess extends HTML_QuickForm_Action
         $data =& $page->controller->container();
         echo '<pre>';
         var_dump($data['_upload']);
-        echo '</pre>'; 
+        echo '</pre>';
     }
 }
 
