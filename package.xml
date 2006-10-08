@@ -31,13 +31,13 @@ Cool features:
     </maintainer>
   </maintainers>
   <release>
-    <version>1.0.6</version>
-    <date>2006-05-31</date>
+    <version>1.0.7</version>
+    <date>2006-10-08</date>
     <license>PHP License</license>
     <state>stable</state>
     <notes>
-Fixed bug #6110: HTML_QuickForm::validate() can throw a PEAR_Error, but there 
-were no checks made for it.
+Fixed bug #8687: defaults for checkboxes and multiselects were not correctly
+applied in non-modal forms if the user haven't seen the page containing them.
     </notes>
     <deps>
        <dep type="pkg" rel="ge" version="3.2.5">HTML_QuickForm</dep>
@@ -70,6 +70,16 @@ were no checks made for it.
     </filelist>
   </release>
   <changelog>
+  <release>
+    <version>1.0.6</version>
+    <date>2006-05-31</date>
+    <license>PHP License</license>
+    <state>stable</state>
+    <notes>
+Fixed bug #6110: HTML_QuickForm::validate() can throw a PEAR_Error, but there 
+were no checks made for it.
+    </notes>
+  </release>
   <release>
     <version>1.0.5</version>
     <date>2005-11-04</date>
