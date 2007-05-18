@@ -3,9 +3,9 @@
  * Example for HTML_QuickForm_Controller: Statemachine
  * Going to either of the two pages based on user input
  *
- * @author Donald Lobo <lobo@groundspring.org>
- *
- * $Id$
+ * @version CVS: $Id$
+ * @author  Donald Lobo <lobo@groundspring.org>
+ * @ignore
  */
 
 require_once 'HTML/QuickForm/Controller.php';

@@ -3,9 +3,9 @@
 * Example for HTML_QuickForm_Controller
 * Handling file uploads and dynamic form generation
 *
-* $Id$
-*
-* @author Bertrand Mansion <bmansion@mamasam.com>
+* @version CVS: $Id$
+* @author  Bertrand Mansion <bmansion@mamasam.com>
+* @ignore
 */
 
 //

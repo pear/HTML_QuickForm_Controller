@@ -2,9 +2,9 @@
 /**
  * Example for HTML_QuickForm_Controller: registration wizard
  * 
- * $Id$
- * 
- * @author Bertrand Mansion <bmansion@mamasam.com>
+ * @version CVS: $Id$
+ * @author  Bertrand Mansion <bmansion@mamasam.com>
+ * @ignore
  */
 
 require_once 'HTML/QuickForm/Controller.php';

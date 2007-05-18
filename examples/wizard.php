@@ -2,7 +2,9 @@
 /**
  * Example 2 for HTML_QuickForm_Controller: Wizard
  * 
- * $Id$
+ * @version CVS: $Id$
+ * @author  Alexey Borzov <avb@php.net>
+ * @ignore
  */
 
 require_once 'HTML/QuickForm/Controller.php';

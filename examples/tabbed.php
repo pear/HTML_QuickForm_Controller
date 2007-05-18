@@ -2,7 +2,9 @@
 /**
  * Example 3 for HTML_QuickForm_Controller: Tabbed form
  * 
- * $Id$
+ * @version CVS: $Id$
+ * @author  Alexey Borzov <avb@php.net>
+ * @ignore
  */
 
 require_once 'HTML/QuickForm/Controller.php';

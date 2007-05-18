@@ -3,7 +3,9 @@
  * Example 1 for HTML_QuickForm_Controller: using the Controller
  * infrastructure to create and process the basic single-page form
  * 
- * $Id$
+ * @version CVS: $Id$
+ * @author  Alexey Borzov <avb@php.net>
+ * @ignore
  */
 
 require_once 'HTML/QuickForm/Controller.php';
