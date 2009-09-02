@@ -102,7 +102,7 @@ class HTML_QuickForm_Action_Jump extends HTML_QuickForm_Action
     */
     function _resolveRelativeURL($url)
     {
-        $https  = !empty($_SERVER['HTTPS']) && ('off' != $_SERVER['HTTPS']);
+        $https  = !empty($_SERVER['HTTPS']) && ('off' != strtolower($_SERVER['HTTPS']));
         $scheme = ($https? 'https:': 'http:');
         if ('//' == substr($url, 0, 2)) {
             return $scheme . $url;
