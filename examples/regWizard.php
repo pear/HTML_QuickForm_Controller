@@ -1,8 +1,8 @@
 <?php
 /**
  * Example for HTML_QuickForm_Controller: registration wizard
- * 
- * @version CVS: $Id$
+ *
+ * @version SVN: $Id$
  * @author  Bertrand Mansion <bmansion@mamasam.com>
  * @ignore
  */
@@ -17,7 +17,7 @@ session_start();
 // Rule for passwords comparison
 function comparePassword($fields)
 {
-    if (strlen($fields['password1']) && strlen($fields['password2']) && 
+    if (strlen($fields['password1']) && strlen($fields['password2']) &&
         $fields['password1'] != $fields['password2']) {
         return array('password1' => 'Passwords are not the same');
     }
@@ -34,15 +34,15 @@ class Page_Account_Credentials extends HTML_QuickForm_Page
         $this->_formBuilt = true;
 
         $this->addElement('header', 'credential_header', 'Your credentials');
-        
+
         $this->addElement('text', 'username', 'Your email address :', array('size' => 30, 'maxlength' => 63));
         $this->addElement('password', 'password1', 'Your password :', array('size' => 16, 'maxlength' => 32));
         $this->addElement('password', 'password2', 'Confirm your password :', array('size' => 16, 'maxlength' => 32));
-        
+
         $buttons[0] =& HTML_QuickForm::createElement('button', 'cancel', 'Cancel', array('onclick'=>"javascript:location.href='http://pear.php.net/package/HTML_QuickForm';"));
         $buttons[1] =& HTML_QuickForm::createElement('submit', $this->getButtonName('next'), 'Next step >>');
         $this->addGroup($buttons, 'buttons', '', '&nbsp', false);
-    
+
         $this->addRule('username', 'Your email address is required', 'required', null, 'client');
         $this->addRule('username', 'Your email address is incorrect', 'email', null, 'client');
 
@@ -67,29 +67,29 @@ class Page_Account_Information extends HTML_QuickForm_Page
         $this->_formBuilt = true;
 
         $this->addElement('header', 'data_header', 'Your personal data');
-        
+
         $name[] = &HTML_QuickForm::createElement('text', 'first', 'Firstname', array('size' => 16, 'maxlength' => 63));
         $name[] = &HTML_QuickForm::createElement('text', 'last', 'Lastname', array('size' => 16, 'maxlength' => 63));
         $this->addGroup($name, 'name', 'Your name :', null, false);
-        
+
         $this->addElement('text', 'company', 'Your company :',  array('size' => 30, 'maxlength' => 63));
-        
+
         $this->addElement('text', 'address1', 'Your address :',  array('size' => 30, 'maxlength' => 63));
         $this->addElement('text', 'address2', '&nbsp;',  array('size' => 30, 'maxlength' => 63));
-        
+
         $this->addElement('text', 'zip', 'Zip code :',  array('size' => 16, 'maxlength' => 16));
         $this->addElement('text', 'city', 'City :',  array('size' => 30, 'maxlength' => 63));
-        
+
         $countries = array('FR'=>'France', 'GE'=>'Germany', 'RU'=>'Russia', 'UK'=>'United Kingdom');
         $this->addElement('select', 'country', 'Your country :', $countries);
-        
+
         $this->addElement('text', 'phone', 'Phone number :',  array('size' => 16, 'maxlength' => 16));
         $this->addElement('text', 'fax', 'Fax number :',  array('size' => 16, 'maxlength' => 16));
-    
+
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('back'), '<< Previous step');
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('next'), 'Finish');
         $this->addGroup($prevnext, 'buttons', '', '&nbsp;', false);
-        
+
         $this->addGroupRule('name', 'First and last names are required', 'required');
         $this->addRule('company', 'Company is required', 'required');
         $this->addRule('address1', 'Address is required', 'required');
@@ -103,13 +103,13 @@ class Page_Account_Information extends HTML_QuickForm_Page
 
 class ActionDisplay extends HTML_QuickForm_Action_Display
 {
-    function _renderForm(&$page) 
+    function _renderForm(&$page)
     {
         $renderer =& $page->defaultRenderer();
 
         $page->setRequiredNote('<font color="#FF0000">*</font> shows the required fields.');
         $page->setJsWarnings('Those fields have errors :', 'Thanks for correcting them.');
-        
+
         $renderer->setFormTemplate('<table width="450" border="0" cellpadding="3" cellspacing="2" bgcolor="#CCCC99"><form{attributes}>{content}</form></table>');
         $renderer->setHeaderTemplate('<tr><td style="white-space:nowrap;background:#996;color:#ffc;" align="left" colspan="2"><b>{header}</b></td></tr>');
         $renderer->setGroupTemplate('<table><tr>{content}</tr></table>', 'name');
@@ -125,7 +125,7 @@ class ActionDisplay extends HTML_QuickForm_Action_Display
 class ActionProcess extends HTML_QuickForm_Action
 {
     function perform(&$page, $actionName)
-    {   
+    {
         $values = $page->controller->exportValues();
         echo '<pre>';
         var_dump($values);

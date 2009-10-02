@@ -1,8 +1,8 @@
 <?php
 /**
  * Example 3 for HTML_QuickForm_Controller: Tabbed form
- * 
- * @version CVS: $Id$
+ *
+ * @version SVN: $Id$
  * @author  Alexey Borzov <avb@php.net>
  * @ignore
  */
@@ -78,7 +78,7 @@ class PageBar extends TabbedPage
     function buildForm()
     {
         $this->buildTabs();
-        
+
         $this->addElement('header',     null, 'Bar page');
 
         $this->addElement('date',       'favDate', 'Favourite date:', array('format' => 'd-M-Y', 'minYear' => 1950, 'maxYear' => date('Y')));
@@ -100,7 +100,7 @@ class PageBaz extends TabbedPage
     function buildForm()
     {
         $this->buildTabs();
-        
+
         $this->addElement('header',     null, 'Baz page');
 
         $this->addElement('textarea',   'textPoetry', 'Recite a poem:', array('rows' => 5, 'cols' => 40));
@@ -115,7 +115,7 @@ class PageBaz extends TabbedPage
 // We subclass the default 'display' handler to customize the output
 class ActionDisplay extends HTML_QuickForm_Action_Display
 {
-    function _renderForm(&$page) 
+    function _renderForm(&$page)
     {
         $renderer =& $page->defaultRenderer();
         // Do some cheesy customizations

@@ -15,9 +15,9 @@
  * @category    HTML
  * @package     HTML_QuickForm_Controller
  * @author      Alexey Borzov <avb@php.net>
- * @copyright   2003-2007 The PHP Group
+ * @copyright   2003-2009 The PHP Group
  * @license     http://www.php.net/license/3_01.txt PHP License 3.01
- * @version     CVS: $Id$
+ * @version     SVN: $Id$
  * @link        http://pear.php.net/package/HTML_QuickForm_Controller
  */
 

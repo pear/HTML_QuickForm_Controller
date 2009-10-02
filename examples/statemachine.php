@@ -3,7 +3,7 @@
  * Example for HTML_QuickForm_Controller: Statemachine
  * Going to either of the two pages based on user input
  *
- * @version CVS: $Id$
+ * @version SVN: $Id$
  * @author  Donald Lobo <lobo@groundspring.org>
  * @ignore
  */

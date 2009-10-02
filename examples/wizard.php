@@ -1,8 +1,8 @@
 <?php
 /**
  * Example 2 for HTML_QuickForm_Controller: Wizard
- * 
- * @version CVS: $Id$
+ *
+ * @version SVN: $Id$
  * @author  Alexey Borzov <avb@php.net>
  * @ignore
  */
@@ -53,7 +53,7 @@ class PageSecond extends HTML_QuickForm_Page
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('back'), '<< Back');
         $prevnext[] =& $this->createElement('submit',   $this->getButtonName('next'), 'Next >>');
         $this->addGroup($prevnext, null, '', '&nbsp;', false);
-        
+
         $this->addGroupRule('name', array('last' => array(array('Last name is required', 'required'))));
 
         $this->setDefaultAction('next');

@@ -2,8 +2,8 @@
 /**
  * Example 1 for HTML_QuickForm_Controller: using the Controller
  * infrastructure to create and process the basic single-page form
- * 
- * @version CVS: $Id$
+ *
+ * @version SVN: $Id$
  * @author  Alexey Borzov <avb@php.net>
  * @ignore
  */
