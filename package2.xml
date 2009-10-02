@@ -29,9 +29,9 @@ Cool features:
   <email>bmansion@mamasam.com</email>
   <active>yes</active>
  </developer>
- <date>2008-07-22</date>
+ <date>2009-10-02</date>
  <version>
-  <release>1.0.9</release>
+  <release>1.0.10</release>
   <api>1.0.5</api>
  </version>
  <stability>
@@ -40,8 +40,8 @@ Cool features:
  </stability>
  <license uri="http://www.php.net/license">PHP License</license>
  <notes>
-Jump Action now uses an absolute URI in Location header, as required by 
-RFC 2616 (bug #13087)
+Jump Action could perform a wrong redirect if $_SERVER['HTTPS'] contained
+'OFF' rather than 'off' (bug #16328)
  </notes>
  <contents>
   <dir name="/" baseinstalldir="HTML/QuickForm">
@@ -93,7 +93,7 @@ RFC 2616 (bug #13087)
     <min>4.3.0</min>
    </php>
    <pearinstaller>
-    <min>1.4.11</min>
+    <min>1.5.4</min>
    </pearinstaller>
    <package>
     <name>HTML_QuickForm</name>
@@ -104,6 +104,22 @@ RFC 2616 (bug #13087)
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>1.0.9</release>
+    <api>1.0.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2008-07-22</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Jump Action now uses an absolute URI in Location header, as required by 
+RFC 2616 (bug #13087)
+   </notes>
+  </release>
   <release>
    <version>
     <release>1.0.8</release>
